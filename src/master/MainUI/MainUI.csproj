@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{793EF5DF-2F27-47B5-B974-7CC66CBD8575}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MainUI</RootNamespace>
+    <AssemblyName>风源产品试验检测平台</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Automation.BDaq4, Version=4.0.0.0, Culture=neutral, PublicKeyToken=463f5928d60183a0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Automation.BDaq4.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2">
+      <HintPath>..\Lib\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.Instrumentation">
+      <HintPath>..\Lib\DevComponents.Instrumentation.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.Instrumentation.Design">
+      <HintPath>..\Lib\DevComponents.Instrumentation.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Excel">
+      <HintPath>..\Lib\Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.OPCAutomation">
+      <HintPath>..\Lib\Interop.OPCAutomation.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\Lib\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\Lib\office.dll</HintPath>
+    </Reference>
+    <Reference Include="rw">
+      <HintPath>..\Lib\rw.dll</HintPath>
+    </Reference>
+    <Reference Include="rwReport">
+      <HintPath>..\Lib\rwReport.exe</HintPath>
+    </Reference>
+    <Reference Include="SunnyUI">
+      <HintPath>..\Lib\SunnyUI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\Lib\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZedGraph">
+      <HintPath>..\Lib\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\MeasureBLL.cs" />
+    <Compile Include="BLL\ModelBLL.cs" />
+    <Compile Include="BLL\ModelTypeBLL.cs" />
+    <Compile Include="BLL\TestItemsBLL.cs" />
+    <Compile Include="BLL\TestProcBLL.cs" />
+    <Compile Include="BLL\TestRecordBLL.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Config\ParaConfig.cs" />
+    <Compile Include="frmLoginRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoginRep.designer.cs">
+      <DependentUpon>frmLoginRep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangePwd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangePwd.designer.cs">
+      <DependentUpon>frmChangePwd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDataManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDataManager.Designer.cs">
+      <DependentUpon>frmDataManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOverload.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOverload.Designer.cs">
+      <DependentUpon>frmOverload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMetering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMetering.Designer.cs">
+      <DependentUpon>frmMetering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestItem.Designer.cs">
+      <DependentUpon>frmTestItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDispReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDispReport.Designer.cs">
+      <DependentUpon>frmDispReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHardWare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHardWare.Designer.cs">
+      <DependentUpon>frmHardWare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainMenu.Designer.cs">
+      <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMianLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMianLogin.Designer.cs">
+      <DependentUpon>frmMianLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetOutValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetOutValue.Designer.cs">
+      <DependentUpon>frmSetOutValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSettingMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSettingMain.designer.cs">
+      <DependentUpon>frmSettingMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSpec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSpec.Designer.cs">
+      <DependentUpon>frmSpec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ResultAll.cs" />
+    <Compile Include="Model\SetReport.cs" />
+    <Compile Include="Model\TestViewModel.cs" />
+    <Compile Include="Modules\AIGrp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AIGrp.Designer.cs">
+      <DependentUpon>AIGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\PowerControlGrp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\PowerControlGrp.Designer.cs">
+      <DependentUpon>PowerControlGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\PowerReadGrp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\PowerReadGrp.Designer.cs">
+      <DependentUpon>PowerReadGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WSDGrp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\WSDGrp.Designer.cs">
+      <DependentUpon>WSDGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SubjectsGrp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\SubjectsGrp.Designer.cs">
+      <DependentUpon>SubjectsGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\NozzleGrp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\NozzleGrp.Designer.cs">
+      <DependentUpon>NozzleGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AOGrp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AOGrp.Designer.cs">
+      <DependentUpon>AOGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\DIGrp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\DIGrp.Designer.cs">
+      <DependentUpon>DIGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\DOGrp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\DOGrp.Designer.cs">
+      <DependentUpon>DOGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\OpcStatusGrp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\OpcStatusGrp.Designer.cs">
+      <DependentUpon>OpcStatusGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\PLCCalibration.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\PLCCalibration.Designer.cs">
+      <DependentUpon>PLCCalibration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure\ControlHelper.cs" />
+    <Compile Include="Procedure\ListItemSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procedure\ListItemSelector.Designer.cs">
+      <DependentUpon>ListItemSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure\SelectorHelper.cs" />
+    <Compile Include="Procedure\SubmitArgs.cs" />
+    <Compile Include="Procedure\Test\Autotest.cs" />
+    <Compile Include="Procedure\Test\BaseTest.cs" />
+    <Compile Include="Procedure\Test\Overload.cs" />
+    <Compile Include="Procedure\ucBaseManagerUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Procedure\ucBaseManagerUI.designer.cs">
+      <DependentUpon>ucBaseManagerUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure\UCCalibration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Procedure\UCCalibration.designer.cs">
+      <DependentUpon>UCCalibration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure\ucAIControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Procedure\ucAIControl.Designer.cs">
+      <DependentUpon>ucAIControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure\ucDOControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Procedure\ucDOControl.Designer.cs">
+      <DependentUpon>ucDOControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure\ucDIControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Procedure\ucDIControl.Designer.cs">
+      <DependentUpon>ucDIControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure\ucModelManage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Procedure\ucModelManage.Designer.cs">
+      <DependentUpon>ucModelManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure\ucTestPoint.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Procedure\ucTestPoint.Designer.cs">
+      <DependentUpon>ucTestPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure\ucTestItems.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Procedure\ucTestItems.Designer.cs">
+      <DependentUpon>ucTestItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure\ucTestParams.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Procedure\ucTestParams.Designer.cs">
+      <DependentUpon>ucTestParams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure\User\frmUserEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procedure\User\frmUserEdit.designer.cs">
+      <DependentUpon>frmUserEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure\User\ucUserManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Procedure\User\ucUserManager.designer.cs">
+      <DependentUpon>ucUserManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ucHMI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucHMI.Designer.cs">
+      <DependentUpon>ucHMI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Var.cs" />
+    <EmbeddedResource Include="frmLoginRep.resx">
+      <DependentUpon>frmLoginRep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangePwd.resx">
+      <DependentUpon>frmChangePwd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDataManager.resx">
+      <DependentUpon>frmDataManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOverload.resx">
+      <DependentUpon>frmOverload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMetering.resx">
+      <DependentUpon>frmMetering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestItem.resx">
+      <DependentUpon>frmTestItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDispReport.resx">
+      <DependentUpon>frmDispReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHardWare.resx">
+      <DependentUpon>frmHardWare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainMenu.resx">
+      <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMianLogin.resx">
+      <DependentUpon>frmMianLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetOutValue.resx">
+      <DependentUpon>frmSetOutValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSettingMain.resx">
+      <DependentUpon>frmSettingMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSpec.resx">
+      <DependentUpon>frmSpec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procedure\ListItemSelector.resx">
+      <DependentUpon>ListItemSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procedure\ucBaseManagerUI.resx">
+      <DependentUpon>ucBaseManagerUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procedure\UCCalibration.resx">
+      <DependentUpon>UCCalibration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procedure\ucAIControl.resx">
+      <DependentUpon>ucAIControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procedure\ucDOControl.resx">
+      <DependentUpon>ucDOControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procedure\ucDIControl.resx">
+      <DependentUpon>ucDIControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procedure\ucModelManage.resx">
+      <DependentUpon>ucModelManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procedure\ucTestPoint.resx">
+      <DependentUpon>ucTestPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procedure\ucTestItems.resx">
+      <DependentUpon>ucTestItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procedure\ucTestParams.resx">
+      <DependentUpon>ucTestParams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procedure\User\frmUserEdit.resx">
+      <DependentUpon>frmUserEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procedure\User\ucUserManager.resx">
+      <DependentUpon>ucUserManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucHMI.resx">
+      <DependentUpon>ucHMI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\scram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\adjust.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\database11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\power-standby.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\spreadsheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\tec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\technical_hammer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\kg_SPOFF.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\kg_SPON.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\铁科院.png" />
+    <None Include="img\logo.png" />
+    <None Include="Resources\复选框_无.png" />
+    <None Include="Resources\复选框勾.png" />
+    <Content Include="img\backimg.png" />
+    <Content Include="log.txt" />
+    <None Include="Resources\csrw_full.jpg" />
+    <None Include="Resources\rw_noback.png" />
+    <None Include="Resources\DIblack.png" />
+    <None Include="Resources\DIGreen.png" />
+    <Content Include="readMe.txt" />
+    <None Include="img\kgled_OFF.gif" />
+    <None Include="img\kgled_ON.gif" />
+    <None Include="img\kgled_ON_red.gif" />
+    <None Include="Resources\CRRC_full.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxBDaqOcxLib">
+      <Guid>{1752FF26-D6C9-4BC8-BFE9-7D0CA26DED89}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="BDaqOcxLib">
+      <Guid>{1752FF26-D6C9-4BC8-BFE9-7D0CA26DED89}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
