@@ -37,7 +37,7 @@ namespace MainUI.Procedure.Test
         /// </summary>
         public bool isGather { get; set; }
 
-        public override string Execute()
+        public override string Execute2()
         {
             try
             {

@@ -279,7 +279,17 @@
     <Compile Include="Procedure\SubmitArgs.cs" />
     <Compile Include="Procedure\Test\Autotest.cs" />
     <Compile Include="Procedure\Test\BaseTest.cs" />
+    <Compile Include="Procedure\Test\XNSYTest.cs" />
+    <Compile Include="Procedure\Test\XLSYTest.cs" />
+    <Compile Include="Procedure\Test\EDZSTest.cs" />
     <Compile Include="Procedure\Test\Overload.cs" />
+    <Compile Include="Procedure\Test\DQCSTest.cs" />
+    <Compile Include="Procedure\Test\DJZXTest.cs" />
+    <Compile Include="Procedure\Test\GLCSTest.cs" />
+    <Compile Include="Procedure\Test\XNSYKQZLTest.cs" />
+    <Compile Include="Procedure\Test\YLKGTest.cs" />
+    <Compile Include="Procedure\Test\YWJCTest.cs" />
+    <Compile Include="Procedure\Test\WGJCTest.cs" />
     <Compile Include="Procedure\ucBaseManagerUI.cs">
       <SubType>UserControl</SubType>
     </Compile>

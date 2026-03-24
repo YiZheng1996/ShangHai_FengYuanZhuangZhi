@@ -1,10 +1,5 @@
 ﻿using MainUI.Config;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace MainUI.Procedure
 {
@@ -106,7 +101,13 @@ namespace MainUI.Procedure
         /// <summary>
         /// 在子类中执行试验过程
         /// </summary>
-        public virtual string Execute() { return ""; }
+        public virtual bool Execute() { return true; }
+
+        /// <summary>
+        /// 在子类中执行试验过程
+        /// </summary>
+        public virtual string Execute2() { return ""; }
+
         /// <summary>
         /// 试验项点初始化
         /// </summary>

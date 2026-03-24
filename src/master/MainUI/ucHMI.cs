@@ -33,7 +33,7 @@ namespace MainUI
         Dictionary<int, UIPanel> dicSubjects = new Dictionary<int, UIPanel>();
         //Dictionary<int, UIPanel> dicWSD = new Dictionary<int, UIPanel>();
         List<UICheckBox> listChk = new List<UICheckBox>();
-        Dictionary<string, BaseTest> dicBase = new Dictionary<string, BaseTest>();
+        Dictionary<string, Func<BaseTest>> dicBase = new Dictionary<string, Func<BaseTest>>(); // 注册映射
         string RptFilename = "";  //报表名称
         string RptFilePath = "";  //报表地址
         string saveRptFile = "";  //报表保存地址
@@ -86,6 +86,21 @@ namespace MainUI
             {
                 Var.MessageError(ex.Message);
             }
+        }
+
+        private void RegisterTestItems()
+        {
+            dicBase.Clear();
+            dicBase.Add("WGJC", () => new WGJCTest());
+            dicBase.Add("DQCS", () => new DQCSTest());
+            dicBase.Add("YWJC", () => new YWJCTest());
+            dicBase.Add("DJZX", () => new DJZXTest());
+            dicBase.Add("EDZS", () => new EDZSTest());
+            dicBase.Add("XLSY", () => new XLSYTest());
+            dicBase.Add("XNSY", () => new XNSYTest());
+            dicBase.Add("YLKG", () => new YLKGTest());
+            dicBase.Add("GLCS", () => new GLCSTest());
+            dicBase.Add("XNSYKQZL", () => new XNSYKQZLTest());
         }
 
         #region 事件
@@ -567,7 +582,7 @@ namespace MainUI
             //下发风源主电路的电压与频率
             Common.powerControlgrp.SetVolt = Common.paraconfig.Volt;
             Common.powerControlgrp.SetFrequency = Common.paraconfig.Frequency;
-
+            RegisterTestItems();
         }
 
         //全选
@@ -650,13 +665,13 @@ namespace MainUI
 
         public void TestStart()
         {
-
             string tip = "";
             tip += "请先确保如下事项：" + rn;
             tip += "1、确认产品安装是否正确。" + rn;
             tip += "2、确认航插或电源线已正确安装。" + rn;
             tip += "3、确认喷嘴直径是否为【" + Common.paraconfig.NozzleDiameter + "】mm。" + rn;
             tip += "点击【是】开始试验，点击【否】返回。" + rn;
+
             if (!Var.MessageOKCancel(tip))
             {
                 TestStop();
@@ -664,104 +679,83 @@ namespace MainUI
             }
             if (!Prepare()) return;
 
-
             #region 循环试验项点
 
-            //循环试验项点
             foreach (var item in listChk)
             {
+                if (!item.Checked) continue;
 
-                if (item.Checked)
+                isNext = false;
+                item.BackColor = Color.Yellow;
+
+                DataRow drTag = item.Tag as DataRow;
+                string testCode = drTag["TestCode"]?.ToString() ?? "";
+                string itemName = item.Text;
+                string savePath = drTag["SavePath"].ToString();
+
+                this.Invoke(new Del(delegate
                 {
-                    isNext = false;
-                    item.BackColor = Color.Yellow;
-                    DataRow drTag = item.Tag as DataRow;
-                    DataTable dt = bll.GetTestProcAll(drTag["ID"].ToInt());
-                    DataColumn dc = new DataColumn();
-                    dc.ColumnName = "State";
-                    dt.Columns.Add(dc);
-                    this.Invoke(new Del(delegate
-                    {
-                        uiProcessBar1.Value = 0;
-                        uiDataGridView1.DataSource = dt;
-                        lblStatus.Text = "试验中";
-                    }));
-                    List<string> lst = new List<string>();
-                    if (item.Text.IndexOf("超负荷") >= 0)
-                    {
-                        Common.mResultAll.listPS2 = new List<double>();
-                        Common.mResultAll.listPS3 = new List<double>();
-                        Common.mResultAll.listPS2_3 = new List<double>();
-                        Common.mResultAll.listIsOverload = new List<bool>();
-                        Common.mResultAll.listIsTemp = new List<bool>();
-                        Common.mResultAll.listTime = new List<string>();
-                        frmOverload frm = new frmOverload(Common.paraconfig);
-                        frm.ShowDialog(this);
-                        if (frm.DialogResult != DialogResult.OK)
-                        {
-                            Var.MessageInfo("未保存测试点位，测试终止");
-                            break;
-                        }
-                        PS2 = frm.PS2;
-                        PS3 = frm.PS3;
-                        Over = frm.Over;
-                        Temp = frm.Temp;
-                        isChaoFuHe = true;
-                        nPS2_Open = DateTime.Now;      //ps2打开的时间戳
-                        nPS2_Close = DateTime.Now;     //ps2关闭的时间戳
-                        nPS3_Open = DateTime.Now;      //ps3打开的时间戳
-                        nPS3_Close = DateTime.Now;     //ps3关闭的时间戳
-                        nPS2_Timeout = DateTime.Now;   //ps2超时的时间戳
-                        nPS3_Timeout = DateTime.Now;   //ps3超时的时间戳
-                        nPS2_3_Timeout = DateTime.Now;
-                    }
-                    //循环试验步骤
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
+                    uiProcessBar1.Value = 0;
+                    lblStatus.Text = "试验中 - " + itemName;
+                }));
 
-                        dt.Rows[i]["State"] = "▷";
-                        this.Invoke(new Del(delegate
-                        {
+                List<string> lst = new List<string>();
 
-                            uiDataGridView1.DataSource = dt;
-
-                        }));
-                        test.dtProc = dt.Rows[i];
-                        string sVal = test.Execute();
-                        if (!string.IsNullOrEmpty(sVal))
-                        {
-                            lst.Add(sVal);
-                        }
-
-                        dt.Rows[i]["State"] = "▶";
-                        this.Invoke(new Del(delegate
-                        {
-                            uiDataGridView1.DataSource = dt;
-                            uiProcessBar1.Value = ((i + 1) * 100 / dt.Rows.Count).ToInt();
-                        }));
-                        //控制单步，不一下跑完
-                        while (isExceute == false && isNext == false)
-                        {
-                            Thread.Sleep(100);
-                        }
-                        isNext = false;
-
-                    }
-                    if (item.Text.IndexOf("超负荷") >= 0)
-                    {
-                        isChaoFuHe = false;
-                    }
-                    item.BackColor = Color.LightGreen;
-                    if (Common.mResultAll.dic.ContainsKey(drTag["SavePath"].ToString()))
-                    {
-                        Common.mResultAll.dic.Remove(drTag["SavePath"].ToString());
-                    }
-                    Common.mResultAll.dic.Add(drTag["SavePath"].ToString(), lst);
-
+                if (string.IsNullOrEmpty(testCode) || !dicBase.ContainsKey(testCode))
+                {
+                    Var.MessageInfo("【" + itemName + "】未配置TestCode或未注册试验逻辑");
+                    continue;
                 }
-            }
-            #endregion
 
+                BaseTest testItem = dicBase[testCode]();
+
+                // 超负荷前置
+                if (testCode == "CFH")
+                {
+                    Common.mResultAll.listPS2 = new List<double>();
+                    Common.mResultAll.listPS3 = new List<double>();
+                    Common.mResultAll.listPS2_3 = new List<double>();
+                    Common.mResultAll.listIsOverload = new List<bool>();
+                    Common.mResultAll.listIsTemp = new List<bool>();
+                    Common.mResultAll.listTime = new List<string>();
+                    frmOverload frm = new frmOverload(Common.paraconfig);
+                    frm.ShowDialog(this);
+                    if (frm.DialogResult != DialogResult.OK)
+                    {
+                        Var.MessageInfo("未保存测试点位，测试终止");
+                        break;
+                    }
+                    PS2 = frm.PS2;
+                    PS3 = frm.PS3;
+                    Over = frm.Over;
+                    Temp = frm.Temp;
+                    isChaoFuHe = true;
+                }
+
+                bool success = testItem.Execute();
+
+                if (testCode == "CFH")
+                {
+                    isChaoFuHe = false;
+                }
+
+                if (success)
+                {
+                    item.BackColor = Color.LightGreen;
+                }
+                else
+                {
+                    item.BackColor = Color.Red;
+                }
+
+                if (Common.mResultAll.dic.ContainsKey(savePath))
+                {
+                    Common.mResultAll.dic.Remove(savePath);
+                }
+                Common.mResultAll.dic.Add(savePath, lst);
+            }
+
+            #endregion
 
             lblStatus.Text = "试验完成";
             Initialise();
@@ -773,6 +767,132 @@ namespace MainUI
             Common.DOgrp[9] = false;
             ControlLock(false);
         }
+
+        //public void TestStart()
+        //{
+
+        //    string tip = "";
+        //    tip += "请先确保如下事项：" + rn;
+        //    tip += "1、确认产品安装是否正确。" + rn;
+        //    tip += "2、确认航插或电源线已正确安装。" + rn;
+        //    tip += "3、确认喷嘴直径是否为【" + Common.paraconfig.NozzleDiameter + "】mm。" + rn;
+        //    tip += "点击【是】开始试验，点击【否】返回。" + rn;
+        //    if (!Var.MessageOKCancel(tip))
+        //    {
+        //        TestStop();
+        //        return;
+        //    }
+        //    if (!Prepare()) return;
+
+
+        //    #region 循环试验项点
+
+        //    //循环试验项点
+        //    foreach (var item in listChk)
+        //    {
+
+        //        if (item.Checked)
+        //        {
+        //            isNext = false;
+        //            item.BackColor = Color.Yellow;
+        //            DataRow drTag = item.Tag as DataRow;
+        //            DataTable dt = bll.GetTestProcAll(drTag["ID"].ToInt());
+        //            DataColumn dc = new DataColumn();
+        //            dc.ColumnName = "State";
+        //            dt.Columns.Add(dc);
+        //            this.Invoke(new Del(delegate
+        //            {
+        //                uiProcessBar1.Value = 0;
+        //                uiDataGridView1.DataSource = dt;
+        //                lblStatus.Text = "试验中";
+        //            }));
+        //            List<string> lst = new List<string>();
+        //            if (item.Text.IndexOf("超负荷") >= 0)
+        //            {
+        //                Common.mResultAll.listPS2 = new List<double>();
+        //                Common.mResultAll.listPS3 = new List<double>();
+        //                Common.mResultAll.listPS2_3 = new List<double>();
+        //                Common.mResultAll.listIsOverload = new List<bool>();
+        //                Common.mResultAll.listIsTemp = new List<bool>();
+        //                Common.mResultAll.listTime = new List<string>();
+        //                frmOverload frm = new frmOverload(Common.paraconfig);
+        //                frm.ShowDialog(this);
+        //                if (frm.DialogResult != DialogResult.OK)
+        //                {
+        //                    Var.MessageInfo("未保存测试点位，测试终止");
+        //                    break;
+        //                }
+        //                PS2 = frm.PS2;
+        //                PS3 = frm.PS3;
+        //                Over = frm.Over;
+        //                Temp = frm.Temp;
+        //                isChaoFuHe = true;
+        //                nPS2_Open = DateTime.Now;      //ps2打开的时间戳
+        //                nPS2_Close = DateTime.Now;     //ps2关闭的时间戳
+        //                nPS3_Open = DateTime.Now;      //ps3打开的时间戳
+        //                nPS3_Close = DateTime.Now;     //ps3关闭的时间戳
+        //                nPS2_Timeout = DateTime.Now;   //ps2超时的时间戳
+        //                nPS3_Timeout = DateTime.Now;   //ps3超时的时间戳
+        //                nPS2_3_Timeout = DateTime.Now;
+        //            }
+        //            //循环试验步骤
+        //            for (int i = 0; i < dt.Rows.Count; i++)
+        //            {
+
+        //                dt.Rows[i]["State"] = "▷";
+        //                this.Invoke(new Del(delegate
+        //                {
+
+        //                    uiDataGridView1.DataSource = dt;
+
+        //                }));
+        //                test.dtProc = dt.Rows[i];
+        //                string sVal = test.Execute();
+        //                if (!string.IsNullOrEmpty(sVal))
+        //                {
+        //                    lst.Add(sVal);
+        //                }
+
+        //                dt.Rows[i]["State"] = "▶";
+        //                this.Invoke(new Del(delegate
+        //                {
+        //                    uiDataGridView1.DataSource = dt;
+        //                    uiProcessBar1.Value = ((i + 1) * 100 / dt.Rows.Count).ToInt();
+        //                }));
+        //                //控制单步，不一下跑完
+        //                while (isExceute == false && isNext == false)
+        //                {
+        //                    Thread.Sleep(100);
+        //                }
+        //                isNext = false;
+
+        //            }
+        //            if (item.Text.IndexOf("超负荷") >= 0)
+        //            {
+        //                isChaoFuHe = false;
+        //            }
+        //            item.BackColor = Color.LightGreen;
+        //            if (Common.mResultAll.dic.ContainsKey(drTag["SavePath"].ToString()))
+        //            {
+        //                Common.mResultAll.dic.Remove(drTag["SavePath"].ToString());
+        //            }
+        //            Common.mResultAll.dic.Add(drTag["SavePath"].ToString(), lst);
+
+        //        }
+        //    }
+        //    #endregion
+
+
+        //    lblStatus.Text = "试验完成";
+        //    Initialise();
+        //    Common.DOgrp[9] = true;
+        //    while (Common.AIgrp[5] > 50)
+        //    {
+        //        Thread.Sleep(100);
+        //    }
+        //    Common.DOgrp[9] = false;
+        //    ControlLock(false);
+        //}
         private void btnStop_Click(object sender, EventArgs e)
         {
             try
