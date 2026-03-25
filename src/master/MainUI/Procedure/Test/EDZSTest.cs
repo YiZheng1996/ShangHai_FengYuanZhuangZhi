@@ -22,7 +22,8 @@ namespace MainUI.Procedure.Test
                 TestStatus(true);
                 TxtTips("电机转向检查开始");
 
-
+                ShowConfirmAndWrite("DJZXJC", "电机转向检查:\n电机旋转方向是否正确？");
+                Delay(1);
 
 
                 TestStatus(false);

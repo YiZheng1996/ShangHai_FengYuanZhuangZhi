@@ -30,6 +30,7 @@
         {
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            this.chkRetain = new Sunny.UI.UICheckBox();
             this.btnReset = new Sunny.UI.UIButton();
             this.btnOK = new Sunny.UI.UIButton();
             this.uiTabControl1 = new Sunny.UI.UITabControl();
@@ -57,11 +58,21 @@
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.txtModel = new Sunny.UI.UITextBox();
             this.uiLabel1 = new Sunny.UI.UILabel();
-            this.chkRetain = new Sunny.UI.UICheckBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.uiLabel6 = new Sunny.UI.UILabel();
+            this.nudMtime = new Sunny.UI.UITextBox();
+            this.uiLabel8 = new Sunny.UI.UILabel();
+            this.uiLabel12 = new Sunny.UI.UILabel();
+            this.nudpressure = new Sunny.UI.UITextBox();
+            this.uiLabel13 = new Sunny.UI.UILabel();
+            this.uiLabel21 = new Sunny.UI.UILabel();
+            this.nudPercentServeIn = new Sunny.UI.UITextBox();
+            this.uiLabel22 = new Sunny.UI.UILabel();
             this.uiGroupBox1.SuspendLayout();
             this.uiTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -91,6 +102,21 @@
             this.uiGroupBox1.Text = "试验参数管理";
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiGroupBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // chkRetain
+            // 
+            this.chkRetain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.chkRetain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkRetain.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkRetain.Location = new System.Drawing.Point(23, 744);
+            this.chkRetain.MinimumSize = new System.Drawing.Size(1, 1);
+            this.chkRetain.Name = "chkRetain";
+            this.chkRetain.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.chkRetain.Size = new System.Drawing.Size(114, 29);
+            this.chkRetain.TabIndex = 398;
+            this.chkRetain.Tag = "9";
+            this.chkRetain.Text = "保留参数";
+            this.chkRetain.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // btnReset
             // 
@@ -125,6 +151,7 @@
             // uiTabControl1
             // 
             this.uiTabControl1.Controls.Add(this.tabPage1);
+            this.uiTabControl1.Controls.Add(this.tabPage2);
             this.uiTabControl1.Controls.Add(this.tabPage3);
             this.uiTabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -161,7 +188,7 @@
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(623, 606);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "试验参数";
+            this.tabPage1.Text = "系统参数";
             // 
             // nudFrequency
             // 
@@ -526,20 +553,158 @@
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // chkRetain
+            // tabPage2
             // 
-            this.chkRetain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.chkRetain.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkRetain.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkRetain.Location = new System.Drawing.Point(23, 744);
-            this.chkRetain.MinimumSize = new System.Drawing.Size(1, 1);
-            this.chkRetain.Name = "chkRetain";
-            this.chkRetain.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.chkRetain.Size = new System.Drawing.Size(114, 29);
-            this.chkRetain.TabIndex = 398;
-            this.chkRetain.Tag = "9";
-            this.chkRetain.Text = "保留参数";
-            this.chkRetain.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.tabPage2.Controls.Add(this.uiLabel21);
+            this.tabPage2.Controls.Add(this.nudPercentServeIn);
+            this.tabPage2.Controls.Add(this.uiLabel22);
+            this.tabPage2.Controls.Add(this.uiLabel6);
+            this.tabPage2.Controls.Add(this.nudMtime);
+            this.tabPage2.Controls.Add(this.uiLabel8);
+            this.tabPage2.Controls.Add(this.uiLabel12);
+            this.tabPage2.Controls.Add(this.nudpressure);
+            this.tabPage2.Controls.Add(this.uiLabel13);
+            this.tabPage2.Location = new System.Drawing.Point(0, 40);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(623, 606);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "试验参数";
+            // 
+            // uiLabel6
+            // 
+            this.uiLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel6.Location = new System.Drawing.Point(386, 173);
+            this.uiLabel6.Name = "uiLabel6";
+            this.uiLabel6.Size = new System.Drawing.Size(53, 23);
+            this.uiLabel6.TabIndex = 417;
+            this.uiLabel6.Text = "min";
+            this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // nudMtime
+            // 
+            this.nudMtime.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nudMtime.DecimalPlaces = 0;
+            this.nudMtime.DecLength = 0;
+            this.nudMtime.Font = new System.Drawing.Font("微软雅黑", 11F);
+            this.nudMtime.Location = new System.Drawing.Point(286, 170);
+            this.nudMtime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.nudMtime.MinimumSize = new System.Drawing.Size(1, 16);
+            this.nudMtime.Name = "nudMtime";
+            this.nudMtime.ShowText = false;
+            this.nudMtime.Size = new System.Drawing.Size(93, 29);
+            this.nudMtime.TabIndex = 416;
+            this.nudMtime.Text = "0";
+            this.nudMtime.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.nudMtime.Type = Sunny.UI.UITextBox.UIEditType.Integer;
+            this.nudMtime.Watermark = "请输入";
+            this.nudMtime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel8
+            // 
+            this.uiLabel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel8.Location = new System.Drawing.Point(121, 173);
+            this.uiLabel8.Name = "uiLabel8";
+            this.uiLabel8.Size = new System.Drawing.Size(158, 23);
+            this.uiLabel8.TabIndex = 415;
+            this.uiLabel8.Text = "性能试验时间";
+            this.uiLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.uiLabel8.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel12
+            // 
+            this.uiLabel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel12.Location = new System.Drawing.Point(386, 135);
+            this.uiLabel12.Name = "uiLabel12";
+            this.uiLabel12.Size = new System.Drawing.Size(53, 23);
+            this.uiLabel12.TabIndex = 414;
+            this.uiLabel12.Text = "kPa";
+            this.uiLabel12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel12.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // nudpressure
+            // 
+            this.nudpressure.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nudpressure.DecimalPlaces = 0;
+            this.nudpressure.DecLength = 0;
+            this.nudpressure.Font = new System.Drawing.Font("微软雅黑", 11F);
+            this.nudpressure.HasMaximum = true;
+            this.nudpressure.HasMinimum = true;
+            this.nudpressure.Location = new System.Drawing.Point(286, 132);
+            this.nudpressure.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.nudpressure.Maximum = 2000D;
+            this.nudpressure.MaximumEnabled = true;
+            this.nudpressure.Minimum = 0D;
+            this.nudpressure.MinimumEnabled = true;
+            this.nudpressure.MinimumSize = new System.Drawing.Size(1, 16);
+            this.nudpressure.Name = "nudpressure";
+            this.nudpressure.ShowText = false;
+            this.nudpressure.Size = new System.Drawing.Size(93, 29);
+            this.nudpressure.TabIndex = 413;
+            this.nudpressure.Text = "0";
+            this.nudpressure.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.nudpressure.Type = Sunny.UI.UITextBox.UIEditType.Double;
+            this.nudpressure.Watermark = "请输入";
+            this.nudpressure.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel13
+            // 
+            this.uiLabel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel13.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel13.Location = new System.Drawing.Point(121, 135);
+            this.uiLabel13.Name = "uiLabel13";
+            this.uiLabel13.Size = new System.Drawing.Size(158, 23);
+            this.uiLabel13.TabIndex = 412;
+            this.uiLabel13.Text = "性能试验工作压力";
+            this.uiLabel13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.uiLabel13.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel21
+            // 
+            this.uiLabel21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel21.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel21.Location = new System.Drawing.Point(386, 217);
+            this.uiLabel21.Name = "uiLabel21";
+            this.uiLabel21.Size = new System.Drawing.Size(53, 23);
+            this.uiLabel21.TabIndex = 420;
+            this.uiLabel21.Text = "%";
+            this.uiLabel21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel21.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // nudPercentServeIn
+            // 
+            this.nudPercentServeIn.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nudPercentServeIn.DecimalPlaces = 0;
+            this.nudPercentServeIn.DecLength = 0;
+            this.nudPercentServeIn.Font = new System.Drawing.Font("微软雅黑", 11F);
+            this.nudPercentServeIn.Location = new System.Drawing.Point(286, 214);
+            this.nudPercentServeIn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.nudPercentServeIn.MinimumSize = new System.Drawing.Size(1, 16);
+            this.nudPercentServeIn.Name = "nudPercentServeIn";
+            this.nudPercentServeIn.ShowText = false;
+            this.nudPercentServeIn.Size = new System.Drawing.Size(93, 29);
+            this.nudPercentServeIn.TabIndex = 419;
+            this.nudPercentServeIn.Text = "0";
+            this.nudPercentServeIn.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.nudPercentServeIn.Type = Sunny.UI.UITextBox.UIEditType.Double;
+            this.nudPercentServeIn.Watermark = "请输入";
+            this.nudPercentServeIn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel22
+            // 
+            this.uiLabel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel22.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel22.Location = new System.Drawing.Point(121, 217);
+            this.uiLabel22.Name = "uiLabel22";
+            this.uiLabel22.Size = new System.Drawing.Size(158, 23);
+            this.uiLabel22.TabIndex = 418;
+            this.uiLabel22.Text = "打气伺服阀开口";
+            this.uiLabel22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.uiLabel22.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // ucTestParams
             // 
@@ -553,6 +718,7 @@
             this.uiTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -588,5 +754,15 @@
         private Sunny.UI.UITextBox nudVolt;
         private Sunny.UI.UITextBox nudFrequency;
         private Sunny.UI.UICheckBox chkRetain;
+        private System.Windows.Forms.TabPage tabPage2;
+        private Sunny.UI.UILabel uiLabel6;
+        private Sunny.UI.UITextBox nudMtime;
+        private Sunny.UI.UILabel uiLabel8;
+        private Sunny.UI.UILabel uiLabel12;
+        private Sunny.UI.UITextBox nudpressure;
+        private Sunny.UI.UILabel uiLabel13;
+        private Sunny.UI.UILabel uiLabel21;
+        private Sunny.UI.UITextBox nudPercentServeIn;
+        private Sunny.UI.UILabel uiLabel22;
     }
 }

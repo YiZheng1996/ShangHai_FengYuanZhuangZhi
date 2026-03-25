@@ -23,7 +23,8 @@ namespace MainUI.Procedure.Test
                 TxtTips("额定转速检查开始");
 
 
-
+                ShowInputAndWrite("ZSJC", "额定转速（试验压力：900kPa±20kPa）：");
+                Delay(1);
 
                 TestStatus(false);
                 TxtTips("额定转速检查结束");

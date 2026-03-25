@@ -22,7 +22,17 @@ namespace MainUI.Procedure.Test
                 TestStatus(true);
                 TxtTips("启停试验开始");
 
+                ShowConfirmAndWrite("WGJC", "外观检查，请确认:\n装置外观检查是否合格？");
+                Delay(1);
 
+                ShowConfirmAndWrite("CCJC1", "尺寸检查，请确认:\n装置电气接口尺寸是否正确？");
+                Delay(1);
+
+                ShowConfirmAndWrite("CCJC2", "尺寸检查，请确认:\n装置机械接口尺寸是否正确？");
+                Delay(1);
+
+                ShowConfirmAndWrite("CCJC3", "尺寸检查，请确认:\n装置气动接口尺寸是否正确？");
+                Delay(1);
 
 
                 TestStatus(false);

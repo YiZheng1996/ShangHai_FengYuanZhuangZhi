@@ -22,7 +22,8 @@ namespace MainUI.Procedure.Test
                 TestStatus(true);
                 TxtTips("油位检查开始");
 
-
+                ShowConfirmAndWrite("YWJC", "油位检查:\n检查油位是否达到要求的高度？");
+                Delay(1);
 
 
                 TestStatus(false);

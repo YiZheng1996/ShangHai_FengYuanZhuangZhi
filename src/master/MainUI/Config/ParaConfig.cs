@@ -71,7 +71,27 @@ namespace MainUI.Config
         /// AI点位集合
         /// </summary>
         public List<AIPoint> listAIPoint { get; set; } = new List<AIPoint>();
+
+
+        /// <summary>
+        /// 性能试验工作压力
+        /// </summary>
+        [IniKeyName("性能试验工作压力")]
+        public int Pressure { get; set; }
+        /// <summary>
+        /// 满负荷试验时间
+        /// </summary>
+        [IniKeyName("性能试验时间")]
+        public int ProvingMTime { get; set; }
+
+        /// <summary>
+        /// 打气伺服阀开口
+        /// </summary>
+        [IniKeyName("打气伺服阀开口")]
+        public double PercentServe { get; set; }
+        
     }
+
     public class DIPoint
     {
         /// <summary>

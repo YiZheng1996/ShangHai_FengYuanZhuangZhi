@@ -11,27 +11,27 @@ using MainUI;
 namespace MainUI.Procedure.Test
 {
     /// <summary>
-    /// 压力开关试验
+    /// 性能试验和空气质量测定
     /// </summary>
-    public class YLKGTest : BaseTest
+    public class XNSYKQZLTest : BaseTest
     {
         public override bool Execute()
         {
             try
             {
                 TestStatus(true);
-                TxtTips("压力开关试验开始");
+                TxtTips("性能试验和空气质量测定开始");
 
 
 
 
                 TestStatus(false);
-                TxtTips("压力开关试验结束");
+                TxtTips("性能试验和空气质量测定结束");
                 return true;
             }
             catch (Exception ex)
             {
-                TxtTips("压力开关试验失败，原因：" + ex.Message);
+                TxtTips("性能试验和空气质量测定失败，原因：" + ex.Message);
                 TestStatus(false);
                 return false;
             }

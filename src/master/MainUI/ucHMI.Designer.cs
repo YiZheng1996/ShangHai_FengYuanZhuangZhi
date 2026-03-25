@@ -94,16 +94,6 @@
             this.palDO = new System.Windows.Forms.FlowLayoutPanel();
             this.grpAIAO = new Sunny.UI.UIGroupBox();
             this.palPowerRead = new System.Windows.Forms.FlowLayoutPanel();
-            this.ucAIControl9 = new MainUI.Procedure.ucAIControl();
-            this.ucAIControl2 = new MainUI.Procedure.ucAIControl();
-            this.ucAIControl1 = new MainUI.Procedure.ucAIControl();
-            this.ucAIControl4 = new MainUI.Procedure.ucAIControl();
-            this.ucAIControl3 = new MainUI.Procedure.ucAIControl();
-            this.ucAIControl6 = new MainUI.Procedure.ucAIControl();
-            this.ucAIControl5 = new MainUI.Procedure.ucAIControl();
-            this.ucAIControl8 = new MainUI.Procedure.ucAIControl();
-            this.ucAIControl7 = new MainUI.Procedure.ucAIControl();
-            this.ucAIControl10 = new MainUI.Procedure.ucAIControl();
             this.grpDI = new Sunny.UI.UIGroupBox();
             this.palDI = new System.Windows.Forms.FlowLayoutPanel();
             this.uiGroupBox4 = new Sunny.UI.UIGroupBox();
@@ -124,8 +114,19 @@
             this.uiProcessBar1 = new Sunny.UI.UIProcessBar();
             this.uiLabel5 = new Sunny.UI.UILabel();
             this.btnGather = new Sunny.UI.UIButton();
+            this.ucAIControl9 = new MainUI.Procedure.ucAIControl();
+            this.ucAIControl2 = new MainUI.Procedure.ucAIControl();
+            this.ucAIControl1 = new MainUI.Procedure.ucAIControl();
+            this.ucAIControl4 = new MainUI.Procedure.ucAIControl();
+            this.ucAIControl3 = new MainUI.Procedure.ucAIControl();
+            this.ucAIControl6 = new MainUI.Procedure.ucAIControl();
+            this.ucAIControl5 = new MainUI.Procedure.ucAIControl();
+            this.ucAIControl8 = new MainUI.Procedure.ucAIControl();
+            this.ucAIControl7 = new MainUI.Procedure.ucAIControl();
+            this.ucAIControl10 = new MainUI.Procedure.ucAIControl();
             this.uiCheckBoxGroup1.SuspendLayout();
             this.uiGroupBox2.SuspendLayout();
+            this.uiFlowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.uiGroupBox7.SuspendLayout();
             this.uiPanel16.SuspendLayout();
@@ -264,9 +265,9 @@
             this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.uiLabel3.Location = new System.Drawing.Point(13, 214);
             this.uiLabel3.Name = "uiLabel3";
-            this.uiLabel3.Size = new System.Drawing.Size(75, 23);
+            this.uiLabel3.Size = new System.Drawing.Size(188, 23);
             this.uiLabel3.TabIndex = 65;
-            this.uiLabel3.Text = "制造编号";
+            this.uiLabel3.Text = "供风模块序列号";
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -311,6 +312,7 @@
             this.btnLoad.Text = "载入";
             this.btnLoad.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnLoad.TipsText = "1";
+            this.btnLoad.Visible = false;
             this.btnLoad.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
@@ -328,6 +330,7 @@
             this.txtHeadNO.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtHeadNO.Watermark = "请输入";
             this.txtHeadNO.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.txtHeadNO.Leave += new System.EventHandler(this.txtHeadNO_Leave);
             // 
             // uiLabel7
             // 
@@ -335,9 +338,9 @@
             this.uiLabel7.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.uiLabel7.Location = new System.Drawing.Point(13, 338);
             this.uiLabel7.Name = "uiLabel7";
-            this.uiLabel7.Size = new System.Drawing.Size(93, 23);
+            this.uiLabel7.Size = new System.Drawing.Size(178, 23);
             this.uiLabel7.TabIndex = 69;
-            this.uiLabel7.Text = "机头序列号";
+            this.uiLabel7.Text = "空压机序列号";
             this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -355,6 +358,7 @@
             this.txtElecNO.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtElecNO.Watermark = "请输入";
             this.txtElecNO.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.txtElecNO.Leave += new System.EventHandler(this.txtElecNO_Leave);
             // 
             // uiLabel4
             // 
@@ -362,9 +366,9 @@
             this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.uiLabel4.Location = new System.Drawing.Point(13, 275);
             this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(93, 23);
+            this.uiLabel4.Size = new System.Drawing.Size(150, 23);
             this.uiLabel4.TabIndex = 67;
-            this.uiLabel4.Text = "电机序列号";
+            this.uiLabel4.Text = "双塔干燥器序列号";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -389,6 +393,7 @@
             // uiFlowLayoutPanel1
             // 
             this.uiFlowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.uiFlowLayoutPanel1.Controls.Add(this.uiGroupBox3);
             this.uiFlowLayoutPanel1.FillDisableColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiFlowLayoutPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiFlowLayoutPanel1.Location = new System.Drawing.Point(14, 27);
@@ -1036,7 +1041,7 @@
             this.grpDO.MinimumSize = new System.Drawing.Size(1, 1);
             this.grpDO.Name = "grpDO";
             this.grpDO.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.grpDO.Size = new System.Drawing.Size(501, 160);
+            this.grpDO.Size = new System.Drawing.Size(1540, 160);
             this.grpDO.Style = Sunny.UI.UIStyle.Custom;
             this.grpDO.TabIndex = 400;
             this.grpDO.Text = "数字量输出";
@@ -1047,7 +1052,7 @@
             // 
             this.palDO.Location = new System.Drawing.Point(6, 24);
             this.palDO.Name = "palDO";
-            this.palDO.Size = new System.Drawing.Size(490, 131);
+            this.palDO.Size = new System.Drawing.Size(1526, 131);
             this.palDO.TabIndex = 1;
             // 
             // grpAIAO
@@ -1059,7 +1064,7 @@
             this.grpAIAO.MinimumSize = new System.Drawing.Size(1, 1);
             this.grpAIAO.Name = "grpAIAO";
             this.grpAIAO.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.grpAIAO.Size = new System.Drawing.Size(501, 190);
+            this.grpAIAO.Size = new System.Drawing.Size(1540, 190);
             this.grpAIAO.TabIndex = 399;
             this.grpAIAO.Text = "电量表";
             this.grpAIAO.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1079,148 +1084,8 @@
             this.palPowerRead.Controls.Add(this.ucAIControl10);
             this.palPowerRead.Location = new System.Drawing.Point(6, 24);
             this.palPowerRead.Name = "palPowerRead";
-            this.palPowerRead.Size = new System.Drawing.Size(490, 162);
+            this.palPowerRead.Size = new System.Drawing.Size(1514, 162);
             this.palPowerRead.TabIndex = 0;
-            // 
-            // ucAIControl9
-            // 
-            this.ucAIControl9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.ucAIControl9.Decimal = 2;
-            this.ucAIControl9.Font = new System.Drawing.Font("宋体", 11F);
-            this.ucAIControl9.Index = 10;
-            this.ucAIControl9.LabelText = "可调电源电压(V)";
-            this.ucAIControl9.Location = new System.Drawing.Point(0, 0);
-            this.ucAIControl9.Margin = new System.Windows.Forms.Padding(0);
-            this.ucAIControl9.Name = "ucAIControl9";
-            this.ucAIControl9.Size = new System.Drawing.Size(245, 32);
-            this.ucAIControl9.TabIndex = 8;
-            this.ucAIControl9.Value = 0D;
-            // 
-            // ucAIControl2
-            // 
-            this.ucAIControl2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.ucAIControl2.Decimal = 2;
-            this.ucAIControl2.Font = new System.Drawing.Font("宋体", 11F);
-            this.ucAIControl2.Index = 15;
-            this.ucAIControl2.LabelText = "总有功功率(kW)";
-            this.ucAIControl2.Location = new System.Drawing.Point(245, 0);
-            this.ucAIControl2.Margin = new System.Windows.Forms.Padding(0);
-            this.ucAIControl2.Name = "ucAIControl2";
-            this.ucAIControl2.Size = new System.Drawing.Size(245, 32);
-            this.ucAIControl2.TabIndex = 1;
-            this.ucAIControl2.Value = 0D;
-            // 
-            // ucAIControl1
-            // 
-            this.ucAIControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.ucAIControl1.Decimal = 2;
-            this.ucAIControl1.Font = new System.Drawing.Font("宋体", 11F);
-            this.ucAIControl1.Index = 7;
-            this.ucAIControl1.LabelText = "平均线电压(V)";
-            this.ucAIControl1.Location = new System.Drawing.Point(0, 32);
-            this.ucAIControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.ucAIControl1.Name = "ucAIControl1";
-            this.ucAIControl1.Size = new System.Drawing.Size(245, 32);
-            this.ucAIControl1.TabIndex = 0;
-            this.ucAIControl1.Value = 380.32D;
-            // 
-            // ucAIControl4
-            // 
-            this.ucAIControl4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.ucAIControl4.Decimal = 2;
-            this.ucAIControl4.Font = new System.Drawing.Font("宋体", 11F);
-            this.ucAIControl4.Index = 19;
-            this.ucAIControl4.LabelText = "总无功功率(kW)";
-            this.ucAIControl4.Location = new System.Drawing.Point(245, 32);
-            this.ucAIControl4.Margin = new System.Windows.Forms.Padding(0);
-            this.ucAIControl4.Name = "ucAIControl4";
-            this.ucAIControl4.Size = new System.Drawing.Size(245, 32);
-            this.ucAIControl4.TabIndex = 3;
-            this.ucAIControl4.Value = 0D;
-            // 
-            // ucAIControl3
-            // 
-            this.ucAIControl3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.ucAIControl3.Decimal = 2;
-            this.ucAIControl3.Font = new System.Drawing.Font("宋体", 11F);
-            this.ucAIControl3.Index = 11;
-            this.ucAIControl3.LabelText = "平均相电压(V)";
-            this.ucAIControl3.Location = new System.Drawing.Point(0, 64);
-            this.ucAIControl3.Margin = new System.Windows.Forms.Padding(0);
-            this.ucAIControl3.Name = "ucAIControl3";
-            this.ucAIControl3.Size = new System.Drawing.Size(245, 32);
-            this.ucAIControl3.TabIndex = 2;
-            this.ucAIControl3.Value = 0D;
-            // 
-            // ucAIControl6
-            // 
-            this.ucAIControl6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.ucAIControl6.Decimal = 2;
-            this.ucAIControl6.Font = new System.Drawing.Font("宋体", 11F);
-            this.ucAIControl6.Index = 23;
-            this.ucAIControl6.LabelText = "总视在功率(kW)";
-            this.ucAIControl6.Location = new System.Drawing.Point(245, 64);
-            this.ucAIControl6.Margin = new System.Windows.Forms.Padding(0);
-            this.ucAIControl6.Name = "ucAIControl6";
-            this.ucAIControl6.Size = new System.Drawing.Size(245, 32);
-            this.ucAIControl6.TabIndex = 5;
-            this.ucAIControl6.Value = 0D;
-            // 
-            // ucAIControl5
-            // 
-            this.ucAIControl5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.ucAIControl5.Decimal = 2;
-            this.ucAIControl5.Font = new System.Drawing.Font("宋体", 11F);
-            this.ucAIControl5.Index = 3;
-            this.ucAIControl5.LabelText = "平均电流(A)";
-            this.ucAIControl5.Location = new System.Drawing.Point(0, 96);
-            this.ucAIControl5.Margin = new System.Windows.Forms.Padding(0);
-            this.ucAIControl5.Name = "ucAIControl5";
-            this.ucAIControl5.Size = new System.Drawing.Size(245, 32);
-            this.ucAIControl5.TabIndex = 4;
-            this.ucAIControl5.Value = 0D;
-            // 
-            // ucAIControl8
-            // 
-            this.ucAIControl8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.ucAIControl8.Decimal = 2;
-            this.ucAIControl8.Font = new System.Drawing.Font("宋体", 11F);
-            this.ucAIControl8.Index = 0;
-            this.ucAIControl8.LabelText = "轴功率(kW)";
-            this.ucAIControl8.Location = new System.Drawing.Point(245, 96);
-            this.ucAIControl8.Margin = new System.Windows.Forms.Padding(0);
-            this.ucAIControl8.Name = "ucAIControl8";
-            this.ucAIControl8.Size = new System.Drawing.Size(245, 32);
-            this.ucAIControl8.TabIndex = 7;
-            this.ucAIControl8.Value = 0D;
-            // 
-            // ucAIControl7
-            // 
-            this.ucAIControl7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.ucAIControl7.Decimal = 2;
-            this.ucAIControl7.Font = new System.Drawing.Font("宋体", 11F);
-            this.ucAIControl7.Index = 28;
-            this.ucAIControl7.LabelText = "频率(Hz)";
-            this.ucAIControl7.Location = new System.Drawing.Point(0, 128);
-            this.ucAIControl7.Margin = new System.Windows.Forms.Padding(0);
-            this.ucAIControl7.Name = "ucAIControl7";
-            this.ucAIControl7.Size = new System.Drawing.Size(245, 32);
-            this.ucAIControl7.TabIndex = 6;
-            this.ucAIControl7.Value = 0D;
-            // 
-            // ucAIControl10
-            // 
-            this.ucAIControl10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.ucAIControl10.Decimal = 3;
-            this.ucAIControl10.Font = new System.Drawing.Font("宋体", 11F);
-            this.ucAIControl10.Index = 27;
-            this.ucAIControl10.LabelText = "功率因素";
-            this.ucAIControl10.Location = new System.Drawing.Point(245, 128);
-            this.ucAIControl10.Margin = new System.Windows.Forms.Padding(0);
-            this.ucAIControl10.Name = "ucAIControl10";
-            this.ucAIControl10.Size = new System.Drawing.Size(245, 32);
-            this.ucAIControl10.TabIndex = 9;
-            this.ucAIControl10.Value = 0D;
             // 
             // grpDI
             // 
@@ -1231,7 +1096,7 @@
             this.grpDI.MinimumSize = new System.Drawing.Size(1, 1);
             this.grpDI.Name = "grpDI";
             this.grpDI.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.grpDI.Size = new System.Drawing.Size(501, 165);
+            this.grpDI.Size = new System.Drawing.Size(1540, 165);
             this.grpDI.TabIndex = 401;
             this.grpDI.Text = "数字量输入";
             this.grpDI.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1241,7 +1106,7 @@
             // 
             this.palDI.Location = new System.Drawing.Point(6, 24);
             this.palDI.Name = "palDI";
-            this.palDI.Size = new System.Drawing.Size(490, 136);
+            this.palDI.Size = new System.Drawing.Size(1526, 136);
             this.palDI.TabIndex = 0;
             // 
             // uiGroupBox4
@@ -1253,7 +1118,7 @@
             this.uiGroupBox4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox4.Name = "uiGroupBox4";
             this.uiGroupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox4.Size = new System.Drawing.Size(501, 190);
+            this.uiGroupBox4.Size = new System.Drawing.Size(1540, 190);
             this.uiGroupBox4.TabIndex = 404;
             this.uiGroupBox4.Text = "气压与温度";
             this.uiGroupBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1263,7 +1128,7 @@
             // 
             this.palAI.Location = new System.Drawing.Point(6, 24);
             this.palAI.Name = "palAI";
-            this.palAI.Size = new System.Drawing.Size(490, 162);
+            this.palAI.Size = new System.Drawing.Size(1526, 162);
             this.palAI.TabIndex = 0;
             // 
             // uiGroupBox3
@@ -1275,15 +1140,17 @@
             this.uiGroupBox3.Controls.Add(this.uiProcessBar1);
             this.uiGroupBox3.Controls.Add(this.uiLabel5);
             this.uiGroupBox3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiGroupBox3.Location = new System.Drawing.Point(775, 5);
+            this.uiGroupBox3.Location = new System.Drawing.Point(118, 55);
             this.uiGroupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox3.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox3.Name = "uiGroupBox3";
             this.uiGroupBox3.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox3.Size = new System.Drawing.Size(1031, 719);
+            this.uiGroupBox3.Size = new System.Drawing.Size(77, 70);
+            this.uiGroupBox3.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox3.TabIndex = 405;
             this.uiGroupBox3.Text = "自动逻辑输出";
             this.uiGroupBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox3.Visible = false;
             this.uiGroupBox3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // lblExceute
@@ -1293,6 +1160,7 @@
             this.lblExceute.Location = new System.Drawing.Point(14, 680);
             this.lblExceute.Name = "lblExceute";
             this.lblExceute.Size = new System.Drawing.Size(127, 23);
+            this.lblExceute.Style = Sunny.UI.UIStyle.Custom;
             this.lblExceute.TabIndex = 412;
             this.lblExceute.Text = "执行状态：连续";
             this.lblExceute.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1360,6 +1228,7 @@
             this.uiDataGridView1.SelectedIndex = -1;
             this.uiDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.uiDataGridView1.Size = new System.Drawing.Size(1023, 635);
+            this.uiDataGridView1.Style = Sunny.UI.UIStyle.Custom;
             this.uiDataGridView1.TabIndex = 411;
             this.uiDataGridView1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -1434,6 +1303,7 @@
             this.btnNext.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(150, 50);
+            this.btnNext.Style = Sunny.UI.UIStyle.Custom;
             this.btnNext.TabIndex = 410;
             this.btnNext.Text = "下一步";
             this.btnNext.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1450,6 +1320,7 @@
             this.btnExceute.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnExceute.Name = "btnExceute";
             this.btnExceute.Size = new System.Drawing.Size(150, 50);
+            this.btnExceute.Style = Sunny.UI.UIStyle.Custom;
             this.btnExceute.TabIndex = 409;
             this.btnExceute.Tag = "true";
             this.btnExceute.Text = "单步执行";
@@ -1465,6 +1336,7 @@
             this.uiProcessBar1.MinimumSize = new System.Drawing.Size(70, 3);
             this.uiProcessBar1.Name = "uiProcessBar1";
             this.uiProcessBar1.Size = new System.Drawing.Size(373, 37);
+            this.uiProcessBar1.Style = Sunny.UI.UIStyle.Custom;
             this.uiProcessBar1.TabIndex = 408;
             this.uiProcessBar1.Text = "proc";
             this.uiProcessBar1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -1476,6 +1348,7 @@
             this.uiLabel5.Location = new System.Drawing.Point(147, 680);
             this.uiLabel5.Name = "uiLabel5";
             this.uiLabel5.Size = new System.Drawing.Size(110, 23);
+            this.uiLabel5.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel5.TabIndex = 407;
             this.uiLabel5.Text = "自动测试进度";
             this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1496,12 +1369,151 @@
             this.btnGather.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.btnGather.Click += new System.EventHandler(this.btnGather_Click);
             // 
+            // ucAIControl9
+            // 
+            this.ucAIControl9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.ucAIControl9.Decimal = 2;
+            this.ucAIControl9.Font = new System.Drawing.Font("宋体", 11F);
+            this.ucAIControl9.Index = 10;
+            this.ucAIControl9.LabelText = "可调电源电压(V)";
+            this.ucAIControl9.Location = new System.Drawing.Point(0, 0);
+            this.ucAIControl9.Margin = new System.Windows.Forms.Padding(0);
+            this.ucAIControl9.Name = "ucAIControl9";
+            this.ucAIControl9.Size = new System.Drawing.Size(245, 32);
+            this.ucAIControl9.TabIndex = 8;
+            this.ucAIControl9.Value = 0D;
+            // 
+            // ucAIControl2
+            // 
+            this.ucAIControl2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.ucAIControl2.Decimal = 2;
+            this.ucAIControl2.Font = new System.Drawing.Font("宋体", 11F);
+            this.ucAIControl2.Index = 15;
+            this.ucAIControl2.LabelText = "总有功功率(kW)";
+            this.ucAIControl2.Location = new System.Drawing.Point(245, 0);
+            this.ucAIControl2.Margin = new System.Windows.Forms.Padding(0);
+            this.ucAIControl2.Name = "ucAIControl2";
+            this.ucAIControl2.Size = new System.Drawing.Size(245, 32);
+            this.ucAIControl2.TabIndex = 1;
+            this.ucAIControl2.Value = 0D;
+            // 
+            // ucAIControl1
+            // 
+            this.ucAIControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.ucAIControl1.Decimal = 2;
+            this.ucAIControl1.Font = new System.Drawing.Font("宋体", 11F);
+            this.ucAIControl1.Index = 7;
+            this.ucAIControl1.LabelText = "平均线电压(V)";
+            this.ucAIControl1.Location = new System.Drawing.Point(490, 0);
+            this.ucAIControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.ucAIControl1.Name = "ucAIControl1";
+            this.ucAIControl1.Size = new System.Drawing.Size(245, 32);
+            this.ucAIControl1.TabIndex = 0;
+            this.ucAIControl1.Value = 380.32D;
+            // 
+            // ucAIControl4
+            // 
+            this.ucAIControl4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.ucAIControl4.Decimal = 2;
+            this.ucAIControl4.Font = new System.Drawing.Font("宋体", 11F);
+            this.ucAIControl4.Index = 19;
+            this.ucAIControl4.LabelText = "总无功功率(kW)";
+            this.ucAIControl4.Location = new System.Drawing.Point(735, 0);
+            this.ucAIControl4.Margin = new System.Windows.Forms.Padding(0);
+            this.ucAIControl4.Name = "ucAIControl4";
+            this.ucAIControl4.Size = new System.Drawing.Size(245, 32);
+            this.ucAIControl4.TabIndex = 3;
+            this.ucAIControl4.Value = 0D;
+            // 
+            // ucAIControl3
+            // 
+            this.ucAIControl3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.ucAIControl3.Decimal = 2;
+            this.ucAIControl3.Font = new System.Drawing.Font("宋体", 11F);
+            this.ucAIControl3.Index = 11;
+            this.ucAIControl3.LabelText = "平均相电压(V)";
+            this.ucAIControl3.Location = new System.Drawing.Point(980, 0);
+            this.ucAIControl3.Margin = new System.Windows.Forms.Padding(0);
+            this.ucAIControl3.Name = "ucAIControl3";
+            this.ucAIControl3.Size = new System.Drawing.Size(245, 32);
+            this.ucAIControl3.TabIndex = 2;
+            this.ucAIControl3.Value = 0D;
+            // 
+            // ucAIControl6
+            // 
+            this.ucAIControl6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.ucAIControl6.Decimal = 2;
+            this.ucAIControl6.Font = new System.Drawing.Font("宋体", 11F);
+            this.ucAIControl6.Index = 23;
+            this.ucAIControl6.LabelText = "总视在功率(kW)";
+            this.ucAIControl6.Location = new System.Drawing.Point(1225, 0);
+            this.ucAIControl6.Margin = new System.Windows.Forms.Padding(0);
+            this.ucAIControl6.Name = "ucAIControl6";
+            this.ucAIControl6.Size = new System.Drawing.Size(245, 32);
+            this.ucAIControl6.TabIndex = 5;
+            this.ucAIControl6.Value = 0D;
+            // 
+            // ucAIControl5
+            // 
+            this.ucAIControl5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.ucAIControl5.Decimal = 2;
+            this.ucAIControl5.Font = new System.Drawing.Font("宋体", 11F);
+            this.ucAIControl5.Index = 3;
+            this.ucAIControl5.LabelText = "平均电流(A)";
+            this.ucAIControl5.Location = new System.Drawing.Point(0, 32);
+            this.ucAIControl5.Margin = new System.Windows.Forms.Padding(0);
+            this.ucAIControl5.Name = "ucAIControl5";
+            this.ucAIControl5.Size = new System.Drawing.Size(245, 32);
+            this.ucAIControl5.TabIndex = 4;
+            this.ucAIControl5.Value = 0D;
+            // 
+            // ucAIControl8
+            // 
+            this.ucAIControl8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.ucAIControl8.Decimal = 2;
+            this.ucAIControl8.Font = new System.Drawing.Font("宋体", 11F);
+            this.ucAIControl8.Index = 0;
+            this.ucAIControl8.LabelText = "轴功率(kW)";
+            this.ucAIControl8.Location = new System.Drawing.Point(245, 32);
+            this.ucAIControl8.Margin = new System.Windows.Forms.Padding(0);
+            this.ucAIControl8.Name = "ucAIControl8";
+            this.ucAIControl8.Size = new System.Drawing.Size(245, 32);
+            this.ucAIControl8.TabIndex = 7;
+            this.ucAIControl8.Value = 0D;
+            // 
+            // ucAIControl7
+            // 
+            this.ucAIControl7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.ucAIControl7.Decimal = 2;
+            this.ucAIControl7.Font = new System.Drawing.Font("宋体", 11F);
+            this.ucAIControl7.Index = 28;
+            this.ucAIControl7.LabelText = "频率(Hz)";
+            this.ucAIControl7.Location = new System.Drawing.Point(490, 32);
+            this.ucAIControl7.Margin = new System.Windows.Forms.Padding(0);
+            this.ucAIControl7.Name = "ucAIControl7";
+            this.ucAIControl7.Size = new System.Drawing.Size(245, 32);
+            this.ucAIControl7.TabIndex = 6;
+            this.ucAIControl7.Value = 0D;
+            // 
+            // ucAIControl10
+            // 
+            this.ucAIControl10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.ucAIControl10.Decimal = 3;
+            this.ucAIControl10.Font = new System.Drawing.Font("宋体", 11F);
+            this.ucAIControl10.Index = 27;
+            this.ucAIControl10.LabelText = "功率因素";
+            this.ucAIControl10.Location = new System.Drawing.Point(735, 32);
+            this.ucAIControl10.Margin = new System.Windows.Forms.Padding(0);
+            this.ucAIControl10.Name = "ucAIControl10";
+            this.ucAIControl10.Size = new System.Drawing.Size(245, 32);
+            this.ucAIControl10.TabIndex = 9;
+            this.ucAIControl10.Value = 0D;
+            // 
             // ucHMI
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.Controls.Add(this.btnGather);
-            this.Controls.Add(this.uiGroupBox3);
             this.Controls.Add(this.uiGroupBox4);
             this.Controls.Add(this.grpAIAO);
             this.Controls.Add(this.uiPanel16);
@@ -1520,6 +1532,7 @@
             this.Size = new System.Drawing.Size(1810, 960);
             this.uiCheckBoxGroup1.ResumeLayout(false);
             this.uiGroupBox2.ResumeLayout(false);
+            this.uiFlowLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.uiGroupBox7.ResumeLayout(false);
             this.uiGroupBox7.PerformLayout();

@@ -8,6 +8,11 @@ namespace MainUI.Model
 {
     public class ResultAll
     {
+        /// <summary>
+        /// 试验类写报表用，key=单元格名称，value=单元格值
+        /// </summary>
+        public Dictionary<string, object> dicReport { get; set; } = new Dictionary<string, object>();
+
         public Dictionary<string, List<string>> dic { get; set; } = new Dictionary<string, List<string>>();
 
         /// <summary>

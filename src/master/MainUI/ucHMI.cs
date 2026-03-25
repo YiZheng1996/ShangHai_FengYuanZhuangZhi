@@ -616,7 +616,9 @@ namespace MainUI
             }
             if (string.IsNullOrEmpty(Common.mTestViewModel.ModelName)) { Var.MessageInfo("请选择产品后开始试验"); return; }
             if (Common.DIgrp[0] == false) { Var.MessageInfo("急停情况下无法启动"); return; }
-            if (string.IsNullOrEmpty(Common.mTestViewModel.TestNO)) { Var.MessageInfo("请填写产品编号后再进行试验"); return; }
+            if (string.IsNullOrEmpty(Common.mTestViewModel.TestNO)) { Var.MessageInfo("请填写[供风模块序列号]后再进行试验"); return; }
+            if (string.IsNullOrEmpty(Common.mTestViewModel.ElecNO)) { Var.MessageInfo("请填写[双塔干燥器序列号]后再进行试验"); return; }
+            if (string.IsNullOrEmpty(Common.mTestViewModel.HeadNO)) { Var.MessageInfo("请填写[空压机序列号]后再进行试验"); return; }
 
             Initialise();
             lblTiming.Text = "00:00:00";
@@ -642,11 +644,11 @@ namespace MainUI
         private void Initialise()
         {
             isTestBegin = false;
-            Common.DOgrp[5] = false;
-            for (int i = 12; i <= 24; i++)
-            {
-                Common.DOgrp[i] = false;
-            }
+            //Common.DOgrp[5] = false;
+            //for (int i = 12; i <= 24; i++)
+            //{
+            //    Common.DOgrp[i] = false;
+            //}
         }
         bool isTestBegin = false;
         DateTime dtTest;
@@ -679,6 +681,8 @@ namespace MainUI
             }
             if (!Prepare()) return;
 
+            Common.mResultAll.dicReport.Clear();  // 每次试验前清空
+
             #region 循环试验项点
 
             foreach (var item in listChk)
@@ -691,15 +695,13 @@ namespace MainUI
                 DataRow drTag = item.Tag as DataRow;
                 string testCode = drTag["TestCode"]?.ToString() ?? "";
                 string itemName = item.Text;
-                string savePath = drTag["SavePath"].ToString();
+                //string savePath = drTag["SavePath"].ToString();
 
                 this.Invoke(new Del(delegate
                 {
                     uiProcessBar1.Value = 0;
                     lblStatus.Text = "试验中 - " + itemName;
                 }));
-
-                List<string> lst = new List<string>();
 
                 if (string.IsNullOrEmpty(testCode) || !dicBase.ContainsKey(testCode))
                 {
@@ -747,12 +749,6 @@ namespace MainUI
                 {
                     item.BackColor = Color.Red;
                 }
-
-                if (Common.mResultAll.dic.ContainsKey(savePath))
-                {
-                    Common.mResultAll.dic.Remove(savePath);
-                }
-                Common.mResultAll.dic.Add(savePath, lst);
             }
 
             #endregion
@@ -914,12 +910,12 @@ namespace MainUI
         {
             Initialise();
             isChaoFuHe = false;
-            Common.DOgrp[9] = true;
-            while (Common.AIgrp[5] > 50)
-            {
-                Thread.Sleep(100);
-            }
-            Common.DOgrp[9] = false;
+            //Common.DOgrp[9] = true;
+            //while (Common.AIgrp[5] > 50)
+            //{
+            //    Thread.Sleep(100);
+            //}
+            //Common.DOgrp[9] = false;
             this.Invoke(new Del(delegate
             {
                 lblStatus.Text = "试验终止";
@@ -1120,6 +1116,17 @@ namespace MainUI
             frmLoginRep frm = new frmLoginRep();
             frm.ShowDialog();
             saveRptFile = frm.sPath;
+        }
+
+        private void txtElecNO_Leave(object sender, EventArgs e)
+        {
+            Common.mTestViewModel.ElecNO = txtElecNO.Text;
+        }
+
+        private void txtHeadNO_Leave(object sender, EventArgs e)
+        {
+            Common.mTestViewModel.HeadNO = txtHeadNO.Text;
+
         }
     }
 }

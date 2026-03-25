@@ -21,13 +21,18 @@ namespace MainUI.Model
             try
             {
 
-                report.Write("TestNO", Common.mTestViewModel.TestNO);     //制造编号
-                report.Write("ElecNO", Common.mTestViewModel.ElecNO);     //电机序列号
-                report.Write("HeadNO", Common.mTestViewModel.HeadNO);     //机头序列号
-                report.Write("DateTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm"));     //试验日期
+                report.Write("GFMK", Common.mTestViewModel.TestNO);     //供风模块
+                report.Write("STGZQ", Common.mTestViewModel.ElecNO);     //双塔干燥器
+                report.Write("KYJ", Common.mTestViewModel.HeadNO);     //空压机
+                report.Write("SYRQ", DateTime.Now.ToString("yyyy-MM-dd HH:mm"));     //试验日期
                 report.Write("Username", RW.UI.RWUser.User.Username);     //试验者名
-                report.Write("Temp", Common.WSDgrp[0]);     //室温
-                report.Write("ModelName", Common.mTestViewModel.ModelName);     //项目名称
+                report.Write("XH", Common.mTestViewModel.ModelName);     //项目名称
+
+                // 新模式遍历
+                foreach (var item in Common.mResultAll.dicReport)
+                {
+                    report.Write(item.Key, item.Value);
+                }
 
                 foreach (var item in Common.mResultAll.dic)
                 {

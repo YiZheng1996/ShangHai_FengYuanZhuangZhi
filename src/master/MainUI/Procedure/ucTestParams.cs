@@ -61,6 +61,10 @@ namespace MainUI.Procedure
                 {
                     rbn110.Checked = true;
                 }
+
+                nudpressure.Text = paraconfig.Pressure.ToString();
+                nudMtime.Text = paraconfig.ProvingMTime.ToString();
+                nudPercentServeIn.Text = paraconfig.PercentServe.ToString();
             }
             catch (Exception ex)
             {
@@ -87,6 +91,11 @@ namespace MainUI.Procedure
                 paraconfig.isVolt = rbn24.Checked;
                 paraconfig.Volt = nudVolt.Text.ToInt();
                 paraconfig.Frequency = nudFrequency.Text.ToInt();
+
+                paraconfig.Pressure = nudpressure.Text.ToInt();
+                paraconfig.ProvingMTime = nudMtime.Text.ToInt();
+                paraconfig.PercentServe = nudPercentServeIn.Text.ToDouble();
+
                 paraconfig.Save();
                 Var.MessageInfo("保存成功。");
             }
@@ -130,6 +139,14 @@ namespace MainUI.Procedure
 
         }
 
+        private void swhJiTouSwitch_MouseUp(object sender, MouseEventArgs e)
+        {
 
+        }
+
+        private void swhJiTiSwitch_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

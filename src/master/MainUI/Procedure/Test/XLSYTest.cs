@@ -22,9 +22,12 @@ namespace MainUI.Procedure.Test
                 TestStatus(true);
                 TxtTips("泄漏试验开始");
 
+                ShowInputAndWrite("SFLY", "泄漏试验\n在供风装置所有的油路连接处用干净的纸擦拭，目测检查是否有漏油现象");
+                Delay(1);
 
-
-
+                ShowInputAndWrite("SFLQ", "泄漏试验\n在供风装置所有的气路连接处涂抹检漏液，目测检查是否有漏气现象");
+                Delay(1);
+                
                 TestStatus(false);
                 TxtTips("泄漏试验结束");
                 return true;
