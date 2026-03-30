@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("风源产品试验检测平台")]
-[assembly: AssemblyDescription("风源产品试验检测平台")]
+[assembly: AssemblyTitle("AGTU-0.9风源装置试验台")]
+[assembly: AssemblyDescription("AGTU-0.9风源装置试验台")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("RW")]
-[assembly: AssemblyProduct("风源产品试验检测平台")]
-[assembly: AssemblyCopyright("Copyright ©  2025")]
+[assembly: AssemblyProduct("AGTU-0.9风源装置试验台")]
+[assembly: AssemblyCopyright("Copyright ©  2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

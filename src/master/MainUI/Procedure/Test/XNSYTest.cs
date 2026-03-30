@@ -25,18 +25,12 @@ namespace MainUI.Procedure.Test
                 #region 第一阶段：充气
 
                 // 启动信号 
+                Common.DOgrp[9] = false; //关闭排气阀
                 Common.DOgrp[5] = true;  // 风源供电
+                Common.DOgrp[7] = true;  // 110V输出
                 Common.DOgrp[17] = true; // 110V允许
                 Common.AOgrp.ServoValve = 5;  // 充气固定伺服阀开5%，快速升压到试验气压值暂定900±20
 
-                // 转向检查，如何转向不对需要停止试验，更换线路
-                bool yes = ShowConfirm("电机转向检查:\n电机旋转方向是否正确？", "系统提示");
-                Common.mResultAll.dicReport["DJZXJC"] = yes ? "OK" : "NG";
-                if (!yes)
-                {
-                    TestStatus(false);
-                    return false;
-                }
 
                 DateTime T1 = DateTime.Now;
                 TxtTips("性能试验正在充气中，请等待排气压力升至" + targetPressure + "KPa");
@@ -80,8 +74,6 @@ namespace MainUI.Procedure.Test
 
                 #region 第三阶段：稳定运行采集数据
 
-                TxtTips("性能试验中，请手动调整伺服阀开口大小，稳定排气压力在" + targetPressure + "±20KPa内");
-
                 List<double> listFlow = new List<double>();     // 流量采集
                 int elapsed = 0;
 
@@ -89,6 +81,7 @@ namespace MainUI.Procedure.Test
                 {
                     elapsed++;
                     //TxtTiming(testTime - elapsed);
+                    TxtTips("性能试验中，请手动调整伺服阀开口大小，稳定排气压力在" + targetPressure + "±20KPa内，剩余时间：" + (testTime - elapsed) + " 秒");
 
                     // 实时监控DI点
                     //if (!CheckMonitorDI()) return false;
@@ -107,7 +100,8 @@ namespace MainUI.Procedure.Test
                 ShowConfirmAndWrite("WGZD", "性能试验\n观察干燥器控制器无故障信号(L13指示灯亮)");
                 Delay(1);
 
-                ShowConfirmAndWrite("JCJRQ", "性能试验\n手动将干燥器内的温度开关短接，检查加热器是否接通。测试辅助电路的吸收电流，判定标准：I＞0.9A");
+                ShowInputAndWrite("JCJRQ", "性能试验\n手动将干燥器内的温度开关短接，检查加热器是否接通。测试辅助电路的吸收电流：");
+                //ShowConfirmAndWrite("JCJRQ", "性能试验\n手动将干燥器内的温度开关短接，检查加热器是否接通。测试辅助电路的吸收电流，判定标准：I＞0.9A");
                 Delay(1);
 
                 // 露点测试手动
@@ -121,26 +115,24 @@ namespace MainUI.Procedure.Test
 
                 // 写入 dicReport（key 与 Excel 模板命名单元格对应）
                 Common.mResultAll.dicReport["HJSD"] = Common.WSDgrp[1].ToString("f1");          // 环境湿度
-                Common.mResultAll.dicReport["DQYL"] = Common.AIgrp[0].ToString("f1");          // 大气压力
+                Common.mResultAll.dicReport["DQYL"] = Common.AIgrp[0].ToString("f1");           // 大气压力
                 Common.mResultAll.dicReport["HJWD"] = Common.WSDgrp[0].ToString("f1");          // 环境温度
-                Common.mResultAll.dicReport["PQCWD"] = Common.Subjectsgrp[1].ToString("f1");    // 排气侧温度(排气温度)
-                Common.mResultAll.dicReport["CSLL"] = avgFlow.ToString("f2");                  // 测试流量（流量均值）
+                Common.mResultAll.dicReport["PQCWD"] = Common.Subjectsgrp[0].ToString("f1");    // 排气侧温度(排气温度)
+                Common.mResultAll.dicReport["CSLL"] = avgFlow.ToString("f2");                   // 测试流量（流量均值）
 
-                Common.mResultAll.dicReport["GLDY01"] = Common.powerReadgrp[8].ToString("f1");     // A相相电压
-                Common.mResultAll.dicReport["GLDY02"] = Common.powerReadgrp[9].ToString("f1");     // B相相电压
-                Common.mResultAll.dicReport["GLDY03"] = Common.powerReadgrp[10].ToString("f1");    // C相相电压
+                Common.mResultAll.dicReport["GLDY01"] = Common.powerReadgrp[4].ToString("f1");     // A相相电压
+                Common.mResultAll.dicReport["GLDY02"] = Common.powerReadgrp[5].ToString("f1");     // B相相电压
+                Common.mResultAll.dicReport["GLDY03"] = Common.powerReadgrp[6].ToString("f1");    // C相相电压
                 Common.mResultAll.dicReport["GLDL01"] = Common.powerReadgrp[0].ToString("f1");     // A相电流
                 Common.mResultAll.dicReport["GLDL02"] = Common.powerReadgrp[1].ToString("f1");     // B相电流
                 Common.mResultAll.dicReport["GLDL03"] = Common.powerReadgrp[2].ToString("f1");     // C相电流
-                Common.mResultAll.dicReport["CSGL01"] = Common.powerReadgrp[12].ToString("f1");     // A有功功率
-                Common.mResultAll.dicReport["CSGL02"] = Common.powerReadgrp[13].ToString("f1");     // B有功功率
-                Common.mResultAll.dicReport["CSGL03"] = Common.powerReadgrp[14].ToString("f1");     // C有功功率
+                Common.mResultAll.dicReport["CSGL01"] = Common.powerReadgrp[15].ToString("f1");     // A有功功率
+                Common.mResultAll.dicReport["CSGL02"] = Common.powerReadgrp[15].ToString("f1");     // B有功功率
+                Common.mResultAll.dicReport["CSGL03"] = Common.powerReadgrp[15].ToString("f1");     // C有功功率
 
                 #endregion
-                
-                // 试验完成后关闭输出点
-                Common.DOgrp[5] = false;  // 风源供电
-                Common.DOgrp[17] = false; // 110V允许
+
+
 
                 TestStatus(false);
                 TxtTips("性能试验结束");
@@ -153,6 +145,16 @@ namespace MainUI.Procedure.Test
                 TxtTips("性能试验失败，原因：" + ex.Message);
                 TestStatus(false);
                 return false;
+            }
+            finally
+            {
+                // 试验完成后关闭输出点
+                Common.DOgrp[5] = false;  // 风源供电
+                Common.DOgrp[17] = false; // 110V允许
+                Common.DOgrp[9] = true; // 打开排气阀
+
+                // 无论正常结束、return false、还是异常，这里一定会执行
+                TestStatus(false);
             }
         }
 

@@ -16,7 +16,7 @@ namespace MainUI
 {
     public static class Var
     {
-        public static string SoftName = "风源产品试验检测平台";
+        public static string SoftName = "AGTU-0.9风源装置试验台";
         public static OPCDriver opcDOGroup = new OPCDriver();
         public static OPCDriver opcDIGroup = new OPCDriver();
         public static OPCDriver opcAOGroup = new OPCDriver();

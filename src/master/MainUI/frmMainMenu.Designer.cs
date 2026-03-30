@@ -44,6 +44,7 @@
             this.lblYaLi = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblWenDu = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblShiDu = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblPenZui = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnMetering = new Sunny.UI.UIImageButton();
             this.btnProc = new Sunny.UI.UIImageButton();
@@ -52,7 +53,6 @@
             this.btnMainData = new Sunny.UI.UIImageButton();
             this.btnHardwareTest = new Sunny.UI.UIImageButton();
             this.btnReports = new Sunny.UI.UIImageButton();
-            this.lblPenZui = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRunStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
@@ -143,7 +143,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "GJCS25024 V1.0.0.20251115";
+            this.label1.Text = "GJCS25031 V1.0.0.20260326\r\n";
             // 
             // timerPLC
             // 
@@ -213,6 +213,16 @@
             this.lblShiDu.Size = new System.Drawing.Size(148, 21);
             this.lblShiDu.Text = "环境湿度：0.0%RH";
             // 
+            // lblPenZui
+            // 
+            this.lblPenZui.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(190)))), ((int)(((byte)(40)))));
+            this.lblPenZui.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
+            this.lblPenZui.ForeColor = System.Drawing.Color.White;
+            this.lblPenZui.Margin = new System.Windows.Forms.Padding(5, 3, 5, 2);
+            this.lblPenZui.Name = "lblPenZui";
+            this.lblPenZui.Size = new System.Drawing.Size(112, 21);
+            this.lblPenZui.Text = "喷嘴系数：0.0";
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -244,7 +254,7 @@
             this.btnMetering.ImageHover = ((System.Drawing.Image)(resources.GetObject("btnMetering.ImageHover")));
             this.btnMetering.ImageOffset = new System.Drawing.Point(12, 5);
             this.btnMetering.ImagePress = ((System.Drawing.Image)(resources.GetObject("btnMetering.ImagePress")));
-            this.btnMetering.Location = new System.Drawing.Point(5, 395);
+            this.btnMetering.Location = new System.Drawing.Point(5, 299);
             this.btnMetering.Name = "btnMetering";
             this.btnMetering.Size = new System.Drawing.Size(99, 99);
             this.btnMetering.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -263,7 +273,7 @@
             this.btnProc.ImageHover = ((System.Drawing.Image)(resources.GetObject("btnProc.ImageHover")));
             this.btnProc.ImageOffset = new System.Drawing.Point(12, 5);
             this.btnProc.ImagePress = ((System.Drawing.Image)(resources.GetObject("btnProc.ImagePress")));
-            this.btnProc.Location = new System.Drawing.Point(5, 297);
+            this.btnProc.Location = new System.Drawing.Point(3, 500);
             this.btnProc.Name = "btnProc";
             this.btnProc.Size = new System.Drawing.Size(99, 99);
             this.btnProc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -271,6 +281,7 @@
             this.btnProc.TabStop = false;
             this.btnProc.Text = "测试逻辑";
             this.btnProc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnProc.Visible = false;
             this.btnProc.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.btnProc.Click += new System.EventHandler(this.btnProc_Click);
             // 
@@ -368,16 +379,6 @@
             this.btnReports.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnReports.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
-            // 
-            // lblPenZui
-            // 
-            this.lblPenZui.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(190)))), ((int)(((byte)(40)))));
-            this.lblPenZui.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.lblPenZui.ForeColor = System.Drawing.Color.White;
-            this.lblPenZui.Margin = new System.Windows.Forms.Padding(5, 3, 5, 2);
-            this.lblPenZui.Name = "lblPenZui";
-            this.lblPenZui.Size = new System.Drawing.Size(112, 21);
-            this.lblPenZui.Text = "喷嘴系数：0.0";
             // 
             // frmMainMenu
             // 

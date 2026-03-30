@@ -49,6 +49,11 @@ namespace MainUI.Procedure.Test
                 TestStatus(false);
                 return false;
             }
+            finally
+            {
+                // 无论正常结束、return false、还是异常，这里一定会执行
+                TestStatus(false);
+            }
         }
 
     }

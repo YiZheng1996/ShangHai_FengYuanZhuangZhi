@@ -583,6 +583,9 @@ namespace MainUI
             Common.powerControlgrp.SetVolt = Common.paraconfig.Volt;
             Common.powerControlgrp.SetFrequency = Common.paraconfig.Frequency;
             RegisterTestItems();
+
+            // 选择型号后清空保存报表集合
+            Common.mResultAll.dicReport.Clear();
         }
 
         //全选
@@ -681,8 +684,6 @@ namespace MainUI
             }
             if (!Prepare()) return;
 
-            Common.mResultAll.dicReport.Clear();  // 每次试验前清空
-
             #region 循环试验项点
 
             foreach (var item in listChk)
@@ -755,12 +756,12 @@ namespace MainUI
 
             lblStatus.Text = "试验完成";
             Initialise();
-            Common.DOgrp[9] = true;
-            while (Common.AIgrp[5] > 50)
-            {
-                Thread.Sleep(100);
-            }
-            Common.DOgrp[9] = false;
+            //Common.DOgrp[9] = true;
+            //while (Common.AIgrp[5] > 50)
+            //{
+            //    Thread.Sleep(100);
+            //}
+            //Common.DOgrp[9] = false;
             ControlLock(false);
         }
 

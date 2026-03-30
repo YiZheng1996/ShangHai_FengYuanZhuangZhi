@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MainUI</RootNamespace>
-    <AssemblyName>风源产品试验检测平台</AssemblyName>
+    <AssemblyName>AGTU-0.9风源装置试验台</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,8 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Automation.BDaq4, Version=4.0.0.0, Culture=neutral, PublicKeyToken=463f5928d60183a0, processorArchitecture=MSIL">
@@ -522,6 +521,7 @@
     <None Include="Resources\rw_noback.png" />
     <None Include="Resources\DIblack.png" />
     <None Include="Resources\DIGreen.png" />
+    <Content Include="logo.ico" />
     <Content Include="readMe.txt" />
     <None Include="img\kgled_OFF.gif" />
     <None Include="img\kgled_ON.gif" />
