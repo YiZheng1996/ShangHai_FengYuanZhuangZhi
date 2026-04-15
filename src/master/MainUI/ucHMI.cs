@@ -1129,5 +1129,10 @@ namespace MainUI
             Common.mTestViewModel.HeadNO = txtHeadNO.Text;
 
         }
+
+        private void txtRemark_Leave(object sender, EventArgs e)
+        {
+            Common.mTestViewModel.Mark = txtRemark.Text;
+        }
     }
 }

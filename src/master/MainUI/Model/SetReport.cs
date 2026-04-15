@@ -27,6 +27,7 @@ namespace MainUI.Model
                 report.Write("SYRQ", DateTime.Now.ToString("yyyy-MM-dd HH:mm"));     //试验日期
                 report.Write("Username", RW.UI.RWUser.User.Username);     //试验者名
                 report.Write("XH", Common.mTestViewModel.ModelName);     //项目名称
+                report.Write("BZ", Common.mTestViewModel.Mark);          //备注
 
                 // 新模式遍历
                 foreach (var item in Common.mResultAll.dicReport)

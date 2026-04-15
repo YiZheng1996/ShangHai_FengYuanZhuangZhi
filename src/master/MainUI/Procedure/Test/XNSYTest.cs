@@ -56,12 +56,36 @@ namespace MainUI.Procedure.Test
 
                 #endregion
 
-                #region 第二阶段：人工检查
+                #region 热机阶段：运行20分钟，不采值
 
                 Common.AOgrp.ServoValve = para.PercentServe;  // 将伺服阀打开到参数设定的开度，使气压稳定在设定工作压力±20
+                
+                int warmUpTime = 20 * 60; // 热机时间：20分钟 = 1200秒
+                int warmUpElapsed = 0;
 
+                TxtTips("进入热机阶段，热机时间 20 分钟，请勿操作...");
+
+                while (warmUpElapsed < warmUpTime && IsTesting)
+                {
+                    warmUpElapsed++;
+                    // 只显示剩余时间，不做任何采值
+                    TxtTips("热机中，剩余时间：" + (warmUpTime - warmUpElapsed) + " 秒");
+                    Delay(1);
+                }
+
+                if (!IsTesting) return false;
+
+                TxtTips("热机完成，开始正式试验");
+                Delay(1);
+
+                #endregion
+
+                #region 第二阶段：人工检查
 
                 ShowInputAndWrite("ZSJC", "额定转速（1387r/min～1533r/min）：");
+                Delay(1);
+
+                ShowConfirmAndWrite("ZSWYD", "额定转速检查\n是否无异常噪音或异常振动？");
                 Delay(1);
 
                 ShowConfirmAndWrite("SFLY", "泄漏试验\n在供风装置所有的油路连接处用干净的纸擦拭，目测检查是否有漏油现象");

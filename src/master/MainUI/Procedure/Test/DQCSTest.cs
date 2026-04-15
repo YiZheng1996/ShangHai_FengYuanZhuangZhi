@@ -39,6 +39,9 @@ namespace MainUI.Procedure.Test
                 ShowConfirmAndWrite("DQCS7", "请确认:\n重复绝缘电阻试验阻值与绝缘电阻试验阻值的差值的绝对值应不大于绝缘电阻试验阻值的20%？");
                 Delay(1);
 
+                ShowConfirmAndWrite("DQCS8", "接地导通测量:\nAC电流30A，测量两个不同接地点间的电阻，是否小于15mΩ？");
+                Delay(1);
+
                 TestStatus(false);
                 TxtTips("电气测试试验结束");
                 return true;
